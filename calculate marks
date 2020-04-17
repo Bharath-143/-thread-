@@ -1,0 +1,38 @@
+#include<bits/stdc++.h> 
+using namespace std;
+void getStudentsList(string file[],int n) 
+{ 
+    int avgScore; 
+    int maxAvgScore = INT_MIN; 
+ 
+    vector<string> names; 
+  
+    for (int i = 0; i < n; i += 4) { 
+
+        avgScore = (stoi(file[i + 1]) +  
+                    stoi(file[i + 2]) +  
+                stoi(file[i + 3])) / 3; 
+  
+        if (avgScore > maxAvgScore) { 
+            maxAvgScore = avgScore; 
+            names.clear(); 
+            names.push_back(file[i]); 
+        } 
+  
+        else if (avgScore == maxAvgScore) 
+            names.push_back(file[i]); 
+    }
+    for (int i = 0; i < names.size(); i++) { 
+        cout <<names[i] + " "; 
+    } 
+  
+    cout << maxAvgScore; 
+}
+int main() 
+{ 
+    string file[] = { "Shrikanth", "20", "30",  
+                    "10", "Rama", "100", "50", "10" };                
+    int n= sizeof(file)/sizeof(file[0]); 
+      
+    getStudentsList(file,n); 
+}
